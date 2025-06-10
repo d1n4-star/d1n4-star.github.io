@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alerta Universitaria - Cornoticias</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F2CFF1;
+      color: #285B23;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #285B23;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .menu a {
+      color: #F2CFF1;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #feb5c6;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .hero-banner {
+      position: relative;
+      height: 350px;
+      background-image: url('Captura\ de\ pantalla\ 2025-06-06\ 170910.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-banner .overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: linear-gradient(135deg, rgba(40, 91, 35, 0.8), rgba(254, 181, 198, 0.4));
+    }
+
+    .hero-banner h1 {
+      position: relative;
+      color: #F2CFF1;
+      font-size: 2rem;
+      z-index: 1;
+      font-weight: 900;
+      font-style: normal;
+      padding: 0 1rem;
+      max-width: 900px;
+      text-shadow: 2px 2px 4px rgba(40, 91, 35, 0.8);
+    }
+
+    .article-detail .content {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      font-weight: 100;
+      font-style: italic;
+      background-color: white;
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.1);
+    }
+
+    .article-detail .content img.full-width {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .article-detail .content img.full-width:hover {
+      transform: scale(1.02);
+    }
+
+    .evidence-right {
+      float: right;
+      width: 250px;
+      border-radius: 10px;
+      margin: 1rem 0 1rem 1rem;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+    }
+
+    .evidence-right:hover {
+      border-color: #feb5c6;
+      transform: scale(1.05);
+    }
+
+    .article-detail p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .article-detail p strong {
+      color: #285B23;
+      font-weight: 600;
+    }
+
+    /* Alerta de seguridad */
+    .security-alert {
+      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #285B23;
+      font-style: italic;
+      font-weight: 400;
+      color: #285B23;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .security-alert::before {
+      content: '⚠️';
+      font-size: 2rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    /* Citas destacadas */
+    .quote-highlight {
+      background-color: #f8f9fa;
+      border-left: 4px solid #feb5c6;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      position: relative;
+    }
+
+    .quote-highlight::before {
+      content: '"';
+      font-size: 3rem;
+      color: #feb5c6;
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      font-weight: 900;
+    }
+
+    /* Llamado a la acción */
+    .call-to-action {
+      background: linear-gradient(135deg, #285B23, #3A7030);
+      color: #F2CFF1;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      margin: 2rem 0;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.2);
+    }
+
+    .call-to-action h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    .call-to-action p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .report-button {
+      background-color: #feb5c6;
+      color: #285B23;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .report-button:hover {
+      background-color: #F2CFF1;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .evidence-right {
+        float: none;
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      .hero-banner h1 {
+        font-size: 1.5rem;
+      }
+
+      .article-detail .content {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .menu a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    footer {
+      background-color: #285B23;
+      color: #F2CFF1;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-top: 4rem;
+    }
+
+    /* Animaciones de entrada */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efecto de lectura progresiva */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, #285B23, #feb5c6);
+      z-index: 1000;
+      transition: width 0.3s ease;
+    }
+
+    /* Efecto de alerta parpadeante sutil */
+    .alert-pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(254, 181, 198, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(254, 181, 198, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(254, 181, 198, 0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso de lectura -->
+  <div class="reading-progress" id="reading-progress"></div>
+
+  <header class="topbar">
+    <div class="logo">
+      <a href="Cornoticias.html">
+        <img src="1000093708-removebg-preview.png" alt="Logo Cornoticias" />
+      </a>
+    </div>
+    <nav class="menu">
+      <a href="Cornoticias.html">Inicio</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="https://www.unicordoba.edu.co/">Universidad</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner alert-pulse">
+    <div class="overlay"></div>
+    <h1>Alerta Universitaria: Denuncian Presunto Acosador en las Instalaciones del Campus</h1>
+  </section>
+
+  <main class="article-detail">
+    <section class="content fade-in">
+      <div class="security-alert">
+        <p><strong>ALERTA DE SEGURIDAD:</strong> La comunidad universitaria debe estar informada sobre esta situación para prevenir futuros incidentes.</p>
+      </div>
+
+      <p><strong>Montería, Córdoba</strong></p>
+      <p>La comunidad universitaria de la Universidad de Córdoba se encuentra en alerta tras diversas denuncias sobre la presencia y accionar de un presunto acosador dentro de sus instalaciones, específicamente en la biblioteca. La situación ha generado preocupación y un llamado urgente a las directivas para reforzar la seguridad y el control de acceso.</p>
+
+      <p>Recientemente, una denuncia anónima que circula entre la comunidad estudiantil y en redes sociales ha puesto de manifiesto la gravedad de los hechos. Una estudiante relató un perturbador incidente ocurrido en la biblioteca, donde un hombre con una actitud "extraña" se le acercó mientras estudiaba. Según el testimonio, el individuo "empezó a decir cosas incoherencias" y la miraba fijamente, lo que le impidió concentrarse.</p>
+
+      <div class="quote-highlight">
+        <p>Cuando él empieza a decir cosas incoherencias yo lo miro fijamente a los ojos porque no me dejaba concentrar, al ver su mirada, una mirada que no genera confianza, lo dejo de mirar.</p>
+      </div>
+
+      <p>Al intentar ignorarlo y cambiarse de puesto, el sujeto la abordó verbalmente, preguntándole con una actitud amenazante a dónde se dirigía. La situación culminó con la estudiante abandonando el lugar "muy nerviosa por la situación."</p>
+
+      <p><strong>No es Estudiante, Sino Acosador Recurrente</strong></p>
+      <p>Un aspecto crucial de la denuncia es la confirmación de que el presunto acosador no es estudiante de la universidad. La denunciante afirma: "Él no es estudiante activo, solo va a la biblioteca, ya le venían haciendo seguimiento." Esto sugiere un patrón de comportamiento y una presencia recurrente e injustificada dentro del campus, lo que ha desatado preguntas sobre la efectividad de los controles de ingreso a la universidad.</p>
+
+      <p><strong>Voces Femeninas Rompen el Silencio</strong></p>
+      <p>La denuncia anónima no es un hecho aislado. En los últimos días, varias mujeres han empezado a compartir sus propias experiencias a través de diversas plataformas. Un reel de Instagram, que ha ganado tracción, es un ejemplo claro de cómo múltiples voces femeninas han decidido romper el silencio para hablar sobre encuentros con este mismo individuo.</p>
+      
+      <img src="Imagen de WhatsApp 2025-05-26 a las 20.52.28_09df84bf.jpg" alt="Captura evidencia" class="evidence-right" />
+<br>
+      <p>Estas denuncias colectivas subrayan la necesidad de una acción inmediata por parte de las autoridades universitarias. La denunciante original enfatizó la gravedad de la situación, afirmando: "Esta situación es algo horrible que no se lo deseo a nadie, la universidad debe tener más control de quien deja ingresar a la universidad."</p>
+
+      <p><strong>Llamado a la Acción y a la Denuncia</strong></p>
+      <p>La comunidad estudiantil, y en particular el estudiantado femenino, se siente vulnerable ante esta situación. Existe un clamor generalizado por una mayor protección y por la implementación de protocolos de seguridad más estrictos que garanticen la integridad de quienes asisten a la universidad.</p>
+
+      <div class="quote-highlight">
+        <p>Por favor que sea una denuncia anónima, no quiero problemas por ese man.</p>
+      </div>
+
+      <p>Se insta a cualquier persona que haya sido testigo o víctima de situaciones similares a que presente su denuncia formal ante las instancias pertinentes de la universidad. Es fundamental que cada caso sea investigado y que se tomen las medidas necesarias para erradicar este tipo de comportamientos y asegurar un ambiente de estudio y convivencia seguro para todos.</p>
+
+      <p>La universidad, por su parte, enfrenta el desafío de responder de manera contundente a estas denuncias, reforzando sus sistemas de seguridad y estableciendo canales efectivos para la recepción y gestión de quejas, siempre garantizando la confidencialidad y protección de los denunciantes.</p>
+
+      <div class="call-to-action">
+        <h3>🛡️ Tu Seguridad es Nuestra Prioridad</h3>
+        <p>Si has sido víctima o testigo de situaciones similares, no dudes en reportarlo. Tu denuncia puede prevenir futuros incidentes.</p>
+        <a href="contacto.html" class="report-button">Reportar Incidente</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Cornoticias. Hecho con 💛 por estudiantes para estudiantes.</p>
+  </footer>
+
+  <script>
+    // Animación de entrada
+    document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('.content');
+      setTimeout(() => {
+        content.classList.add('fade-in');
+      }, 300);
+    });
+
+    // Barra de progreso de lectura
+    window.addEventListener('scroll', function() {
+      const article = document.querySelector('.article-detail');
+      const progressBar = document.getElementById('reading-progress');
+      
+      if (article) {
+        const articleTop = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollTop = window.pageYOffset;
+        
+        const articleStart = articleTop - windowHeight;
+        const articleEnd = articleTop + articleHeight;
+        
+        if (scrollTop >= articleStart && scrollTop <= articleEnd) {
+          const progress = ((scrollTop - articleStart) / (articleEnd - articleStart)) * 100;
+          progressBar.style.width = Math.min(progress, 100) + '%';
+        } else if (scrollTop < articleStart) {
+          progressBar.style.width = '0%';
+        } else {
+          progressBar.style.width = '100%';
+        }
+      }
+    });
+
+    // Efecto hover mejorado para imágenes
+    document.querySelectorAll('.evidence-right').forEach(img => {
+      img.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 10px 25px rgba(254, 181, 198, 0.3)';
+      });
+      
+      img.addEventListener('mouseleave', function() {
+        this.style.boxShadow = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

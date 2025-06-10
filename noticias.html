@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Noticias - Cornoticias</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;0,900;1,100;1,900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F2CFF1;
+      color: #285B23;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #285B23;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .menu a {
+      color: #F2CFF1;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #feb5c6;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .page-title {
+      text-align: center;
+      margin: 2rem 0;
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: #285B23;
+    }
+
+    .filters-container {
+      max-width: 1200px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      background-color: #285B23;
+      color: #F2CFF1;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: #feb5c6;
+      color: #285B23;
+      transform: translateY(-2px);
+    }
+
+    .filter-btn.active {
+      background-color: #feb5c6;
+      color: #285B23;
+      box-shadow: 0 4px 12px rgba(254, 181, 198, 0.4);
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 500px;
+      padding: 0.75rem 1rem;
+      border: 2px solid #285B23;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: #feb5c6;
+      box-shadow: 0 0 0 3px rgba(254, 181, 198, 0.2);
+    }
+
+    .news-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .news-card {
+      display: flex;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(254, 181, 198, 0.2);
+    }
+
+    .news-image {
+      width: 300px;
+      min-width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-category {
+      background-color: #feb5c6;
+      color: #285B23;
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .news-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin: 0 0 0.75rem 0;
+      color: #285B23;
+    }
+
+    .news-excerpt {
+      font-weight: 100;
+      font-style: italic;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+      color: #333;
+    }
+
+    .news-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .read-more {
+      align-self: flex-start;
+      background-color: #285B23;
+      color: #F2CFF1;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .read-more:hover {
+      background-color: #feb5c6;
+      color: #285B23;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      background-color: #285B23;
+      color: #F2CFF1;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-top: 4rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      font-style: italic;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .news-card {
+        flex-direction: column;
+      }
+
+      .news-image {
+        width: 100%;
+        height: 200px;
+      }
+
+      .menu a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .filters {
+        gap: 0.5rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <a href="Cornoticias.html">
+        <img src="1000093708-removebg-preview.png" alt="Logo Cornoticias" />
+      </a>
+    </div>
+    <nav class="menu">
+      <a href="Cornoticias.html">Inicio</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#universidad">Universidad</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <h1 class="page-title">Noticias</h1>
+
+  <div class="filters-container">
+    <div class="filters">
+      <button class="filter-btn active" data-category="todos">Todos</button>
+      <button class="filter-btn" data-category="celebraciones">Celebraciones</button>
+      <button class="filter-btn" data-category="seguridad">Seguridad</button>
+      <button class="filter-btn" data-category="emprendimiento">Emprendimiento</button>
+      <button class="filter-btn" data-category="beneficios">Beneficios</button>
+    </div>
+    <div class="search-container">
+      <input type="text" class="search-box" placeholder="Buscar noticias...">
+    </div>
+  </div>
+
+  <div class="news-container">
+    <!-- Noticia 1 -->
+    <article class="news-card" data-category="seguridad">
+      <img src="Captura de pantalla 2025-06-06 170910.png" alt="Alerta Universitaria" class="news-image">
+      <div class="news-content">
+        <span class="news-category">Seguridad</span>
+        <h2 class="news-title">Alerta Universitaria: Denuncian Presunto Acosador en las Instalaciones del Campus</h2>
+        <p class="news-excerpt">Estudiantes reportan incidentes preocupantes en diferentes áreas de la universidad. Las autoridades universitarias han iniciado investigaciones para garantizar la seguridad de la comunidad estudiantil.</p>
+        <a href="noticia-acoso.html" class="read-more">Seguir leyendo</a>
+      </div>
+    </article>
+
+    <!-- Noticia 2 -->
+    <article class="news-card" data-category="emprendimiento">
+      <img src="unicordobaemprende.png" alt="Feria de Micronegocios" class="news-image">
+      <div class="news-content">
+        <span class="news-category">Emprendimiento</span>
+        <h2 class="news-title">Feria de Micronegocios y Emprendimiento</h2>
+        <p class="news-excerpt">Unicórdoba Celebra con Éxito la feria realizada los días 4 y 5 de junio. El evento reunió a emprendedores de toda la región, mostrando el talento y la innovación de la comunidad universitaria.</p>
+        <a href="unicordobaem.html" class="read-more">Seguir leyendo</a>
+      </div>
+    </article>
+
+    <!-- Noticia 3 -->
+    <article class="news-card" data-category="beneficios">
+      <img src="diferencial.png" alt="Tarifa Diferencial" class="news-image">
+      <div class="news-content">
+        <span class="news-category">Beneficios</span>
+        <h2 class="news-title">Abierta Convocatoria 2025-2 de la Tarifa Diferencial Estudiantil en Montería</h2>
+        <p class="news-excerpt">Conoce todo lo que deberías saber sobre este maravilloso beneficio. La Alcaldía de Montería ha abierto la convocatoria para subsidiar el transporte público de estudiantes.</p>
+        <a href="tarifadi.html" class="read-more">Seguir leyendo</a>
+      </div>
+    </article>
+
+    <!-- Noticia 4 -->
+    <article class="news-card" data-category="celebraciones">
+      <img src="Captura de pantalla_8-6-2025_175948_www.instagram.com.jpeg" alt="Ingeniería de Sistemas" class="news-image">
+      <div class="news-content">
+        <span class="news-category">Celebraciones</span>
+        <h2 class="news-title">Ingeniería de Sistemas de Unicórdoba Celebra Dos Décadas de Trayectoria y Vanguardia</h2>
+        <p class="news-excerpt">El programa de Ingeniería de Sistemas celebró su vigésimo aniversario, marcando dos décadas de importantes contribuciones a la formación de profesionales de alto nivel.</p>
+        <a href="sistemas.html" class="read-more">Seguir leyendo</a>
+      </div>
+    </article>
+
+    <div class="no-results" style="display: none;">
+      <h3>No se encontraron noticias que coincidan con tu búsqueda</h3>
+      <p>Intenta con otros términos o categorías</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Cornoticias. Hecho con 💛 por estudiantes para estudiantes.</p>
+  </footer>
+
+  <script>
+    // Filtrado por categorías
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsCards = document.querySelectorAll('.news-card');
+    const searchBox = document.querySelector('.search-box');
+    const noResults = document.querySelector('.no-results');
+
+    // Función para filtrar noticias
+    function filterNews() {
+      const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
+      const searchTerm = searchBox.value.toLowerCase();
+      
+      let visibleCount = 0;
+      
+      newsCards.forEach(card => {
+        const cardCategory = card.dataset.category;
+        const cardTitle = card.querySelector('.news-title').textContent.toLowerCase();
+        const cardExcerpt = card.querySelector('.news-excerpt').textContent.toLowerCase();
+        
+        const matchesCategory = activeCategory === 'todos' || cardCategory === activeCategory;
+        const matchesSearch = searchTerm === '' || 
+                             cardTitle.includes(searchTerm) || 
+                             cardExcerpt.includes(searchTerm);
+        
+        if (matchesCategory && matchesSearch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Mostrar mensaje si no hay resultados
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+      } else {
+        noResults.style.display = 'none';
+      }
+    }
+
+    // Event listeners para botones de filtro
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Quitar clase active de todos los botones
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Añadir clase active al botón clickeado
+        button.classList.add('active');
+        // Filtrar noticias
+        filterNews();
+      });
+    });
+
+    // Event listener para búsqueda
+    searchBox.addEventListener('input', filterNews);
+
+    // Animación al hacer scroll
+    function animateOnScroll() {
+      const cards = document.querySelectorAll('.news-card');
+      cards.forEach((card, index) => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < window.innerHeight - 100) {
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, index * 100);
+        }
+      });
+    }
+
+    // Inicializar con estilo para animación
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.news-card');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.5s ease';
+      });
+      
+      // Ejecutar animación inicial
+      setTimeout(animateOnScroll, 100);
+    });
+
+    // Ejecutar animación al hacer scroll
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>

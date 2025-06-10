@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cornoticias</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100;0,400;0,600;0,900;1,900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F2CFF1;
+      color: #285B23;
+    }
+
+    .animate-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .animate-scroll.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Topbar moderno */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #285B23 0%, #3A7030 100%);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(40, 91, 35, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo img {
+      height: 100px;
+      transition: transform 0.3s ease;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .menu {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .menu a {
+      color: #F2CFF1;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(254, 181, 198, 0.2);
+    }
+
+    .menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: -1;
+    }
+
+    .menu a:hover::before {
+      left: 0;
+    }
+
+    .menu a:hover {
+      color: #285B23;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(254, 181, 198, 0.4);
+      border-color: #feb5c6;
+    }
+
+    .menu a:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive para el menú */
+    @media (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      
+      .menu a {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Hero banner mejorado */
+    .hero-banner {
+      position: relative;
+      height: 500px;
+      background-image: linear-gradient(rgba(40, 91, 35, 0.3), rgba(254, 181, 198, 0.2)), url('4b823460-7848-429d-995a-3b66567240c6.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-banner .overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: linear-gradient(135deg, rgba(40, 91, 35, 0.4), rgba(254, 181, 198, 0.2));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: #F2CFF1;
+      animation: fadeInUp 1.2s ease-out;
+    }
+
+    .hero-content img {
+      height: 500px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 10px 30px rgba(40, 91, 35, 0.3));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .hero-phrase {
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 100;
+    }
+
+    /* Cards mejoradas */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid rgba(254, 181, 198, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(40, 91, 35, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #285B23, #feb5c6);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(254, 181, 198, 0.25);
+      border-color: #feb5c6;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card-content h3 {
+      margin: 0 0 0.75rem;
+      color: #285B23;
+      font-weight: 900;
+      font-style: italic;
+      line-height: 1.3;
+      font-size: 1.1rem;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      color: #555;
+      font-weight: 100;
+      font-style: italic;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .card-content a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #285B23;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: linear-gradient(135deg, transparent, transparent);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-content a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .card-content a:hover::before {
+      left: 0;
+    }
+
+    .card-content a:hover {
+      color: #285B23;
+      transform: translateY(-2px);
+    }
+
+    /* Sección Sobre Cornoticias mejorada */
+    .sobre {
+      background: linear-gradient(135deg, #F2CFF1, white);
+      padding: 4rem 2rem;
+      color: #285B23;
+    }
+
+    .contenido-sobre {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .contenido-sobre .imagen {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .contenido-sobre .imagen img {
+      max-width: 400px;
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(40, 91, 35, 0.15);
+      transition: transform 0.4s ease;
+    }
+
+    .contenido-sobre .imagen:hover img {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    .contenido-sobre .texto {
+      flex: 1.2;
+      min-width: 300px;
+    }
+
+    .contenido-sobre h2 {
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+      font-weight: 900;
+      position: relative;
+      line-height: 1.2;
+    }
+
+    .contenido-sobre h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #285B23, #feb5c6);
+      border-radius: 2px;
+    }
+
+    .contenido-sobre p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      color: #444;
+    }
+
+    .contenido-sobre p strong {
+      color: #285B23;
+      font-weight: 600;
+    }
+
+    /* Footer mejorado */
+    .footer {
+      background: linear-gradient(135deg, #285B23, #3A7030);
+      color: #F2CFF1;
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-style: italic;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #feb5c6, #F2CFF1, #feb5c6);
+    }
+
+    /* Responsive mejorado */
+    @media (max-width: 768px) {
+      .topbar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .hero-banner {
+        height: 400px;
+        background-attachment: scroll;
+      }
+
+      .hero-content img {
+        height: 300px;
+      }
+
+      .contenido-sobre {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .contenido-sobre h2 {
+        font-size: 1.8rem;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .sobre {
+        padding: 2rem 1rem;
+      }
+    }
+
+    /* Scroll suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Mejoras de accesibilidad */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-scroll,
+      .card,
+      .menu a,
+      .hero-content img {
+        animation: none;
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <a href="Cornoticias.html">
+        <img src="1000093708-removebg-preview.png" alt="Logo Cornoticias" />
+      </a>
+    </div>
+    <nav class="menu">
+      <a href="Cornoticias.html">Inicio</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="https://www.unicordoba.edu.co/">Universidad</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="noticias" class="hero-banner">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <img src="cor - sin noticias.png" alt="Logo Central">
+    </div>
+  </section>
+
+  <section id="sobre" class="sobre animate-scroll">
+    <div class="contenido-sobre">
+      <div class="imagen">
+        <img src="quenes.png" alt="Cornoticias - Universidad" />
+      </div>
+      <div class="texto">
+        <h2>¿Qué es Cornoticias?</h2>
+        <p>
+          <strong>Cornoticias</strong> es una plataforma independiente creada por estudiantes para estudiantes. Su objetivo es visibilizar las realidades del entorno universitario, dando voz a las experiencias, problemáticas y logros que muchas veces no encuentran espacio en los medios tradicionales.
+        </p>
+        <p>
+          Nació con la intención de crear un medio libre de censura y comprometido con la verdad. Aquí no solo informamos, también escuchamos, compartimos y construimos comunidad.
+        </p>
+        <p>
+          En Cornoticias, cada historia importa. Cada testimonio cuenta. Porque creemos que el periodismo estudiantil puede ser una herramienta poderosa para el cambio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards animate-scroll">
+    <article class="card">
+      <img src="Captura de pantalla 2025-06-06 170910.png" alt="Noticia 1">
+      <div class="card-content">
+        <h3>Alerta Universitaria</h3>
+        <p>Denuncian Presunto Acosador en las Instalaciones del Campus</p>
+        <a href="noticia-acoso.html">Seguir leyendo</a>
+      </div>
+    </article>
+    <article class="card">
+      <img src="unicordobaemprende.png" alt="Noticia 2">
+      <div class="card-content">
+        <h3>Feria de Micronegocios y Emprendimiento</h3>
+        <p>Unicórdoba Celebra con Éxito la feria realizada los dias 4 y 5 de junio.</p>
+        <a href="unicordobaem.html">Seguir leyendo</a>
+      </div>
+    </article>
+    <article class="card">
+      <img src="diferencial.png" alt="Noticia 3">
+      <div class="card-content">
+        <h3>Abierta Convocatoria 2025-2 de la Tarifa Diferencial Estudiantil en Montería</h3>
+        <p>Conoce todo lo que deberias saber sobre este maravilloso beneficio.</p>
+        <a href="tarifadi.html">Seguir leyendo</a>
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Cornoticias. Hecho con 💛 por estudiantes para estudiantes.</p>
+  </footer>
+
+  <script>
+    const animatedElements = document.querySelectorAll('.animate-scroll');
+
+    function animateOnScroll() {
+      animatedElements.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          el.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
+</body>
+</html>

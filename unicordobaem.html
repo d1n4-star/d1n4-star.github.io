@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feria de Micronegocios y Emprendimiento 2025 - Cornoticias</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F2CFF1;
+      color: #285B23;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #285B23;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .menu a {
+      color: #F2CFF1;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #feb5c6;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .hero-banner {
+      position: relative;
+      height: 350px;
+      background-image: url('unicordobaemprende.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-banner .overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: linear-gradient(135deg, rgba(40, 91, 35, 0.7), rgba(254, 181, 198, 0.3));
+    }
+
+    .hero-banner h1 {
+      position: relative;
+      color: #F2CFF1;
+      font-size: 2rem;
+      z-index: 1;
+      font-weight: 900;
+      font-style: normal;
+      padding: 0 1rem;
+      max-width: 900px;
+      text-shadow: 2px 2px 4px rgba(40, 91, 35, 0.8);
+    }
+
+    .article-detail .content {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      font-weight: 100;
+      font-style: italic;
+      background-color: white;
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.1);
+    }
+
+    .article-detail .content img.full-width {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .article-detail .content img.full-width:hover {
+      transform: scale(1.02);
+    }
+
+    .evidence-right {
+      float: right;
+      width: 250px;
+      border-radius: 10px;
+      margin: 1rem 0 1rem 1rem;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+    }
+
+    .evidence-right:hover {
+      border-color: #feb5c6;
+      transform: scale(1.05);
+    }
+
+    .article-detail p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .article-detail p strong {
+      color: #285B23;
+      font-weight: 600;
+    }
+
+    /* Destacar estadísticas importantes */
+    .stats-highlight {
+      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #285B23;
+      font-style: italic;
+      font-weight: 400;
+      color: #285B23;
+      margin: 2rem 0;
+      position: relative;
+      text-align: center;
+    }
+
+    .stats-highlight::before {
+      content: '📊';
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stats-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #285B23;
+      display: block;
+      margin: 0.5rem 0;
+    }
+
+    /* Estilo para fechas destacadas */
+    .date-highlight {
+      background-color: #feb5c6;
+      color: #285B23;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-style: normal;
+      display: inline-block;
+      margin: 0 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+      .evidence-right {
+        float: none;
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      .hero-banner h1 {
+        font-size: 1.5rem;
+      }
+
+      .article-detail .content {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .menu a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .stats-number {
+        font-size: 2rem;
+      }
+    }
+
+    footer {
+      background-color: #285B23;
+      color: #F2CFF1;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-top: 4rem;
+    }
+
+    /* Animaciones de entrada */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efecto de lectura progresiva */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, #285B23, #feb5c6);
+      z-index: 1000;
+      transition: width 0.3s ease;
+    }
+
+    /* Efecto de partículas para celebración */
+    .celebration-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .celebration-effect::after {
+      content: '🎉✨🎊';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      font-size: 1.5rem;
+      opacity: 0.3;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso de lectura -->
+  <div class="reading-progress" id="reading-progress"></div>
+
+  <header class="topbar">
+    <div class="logo">
+      <a href="Cornoticias.html">
+        <img src="1000093708-removebg-preview.png" alt="Logo Cornoticias" />
+      </a>
+    </div>
+    <nav class="menu">
+      <a href="Cornoticias.html">Inicio</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="https://www.unicordoba.edu.co/">Universidad</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner celebration-effect">
+    <div class="overlay"></div>
+    <h1>Unicórdoba Celebra con Éxito la Feria de Micronegocios y Emprendimiento 2025</h1>
+  </section>
+
+  <main class="article-detail">
+    <section class="content fade-in">
+      <p><strong>Montería, Córdoba</strong></p>
+      
+      <p>La Universidad de Córdoba (Unicórdoba) fue el epicentro del talento y la innovación local al acoger, durante el <span class="date-highlight">4 y 5 de junio</span>, la Feria de Micronegocios y Emprendimiento 2025. El evento, que se consolidó como un espacio vital para el impulso de la economía regional, contó con la destacada participación de emprendedores y microempresarios de toda la región.</p>
+
+      <div class="stats-highlight">
+        <span class="stats-number">220</span>
+        <strong>Unidades Económicas Participantes</strong>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Un récord de participación que demuestra el crecimiento del ecosistema emprendedor en Córdoba</p>
+      </div>
+
+      <p>Durante dos días, los pasillos de la universidad se transformaron en una vitrina para emprendedores y microempresarios, quienes tuvieron la oportunidad de exhibir sus productos y servicios, conectar con el público y generar nuevas alianzas. La diversidad de propuestas reflejó el dinamismo y la creatividad de la comunidad emprendedora cordobesa.</p>
+
+      <p>Esta feria anual subraya el compromiso de Unicórdoba con el fomento del espíritu empresarial entre sus estudiantes, egresados y la comunidad en general, proporcionando una plataforma crucial para el desarrollo de proyectos sostenibles y la reactivación económica del departamento. La masiva asistencia y la calidad de los emprendimientos presentados auguran un futuro prometedor para el ecosistema emprendedor de la región.</p>
+
+      <p>El evento no solo sirvió como escaparate comercial, sino también como un espacio de aprendizaje y networking, donde los participantes pudieron intercambiar experiencias, conocimientos y establecer conexiones valiosas para el crecimiento de sus negocios. La Universidad de Córdoba reafirma así su papel como catalizador del desarrollo económico y social de la región.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Cornoticias. Hecho con 💛 por estudiantes para estudiantes.</p>
+  </footer>
+
+  <script>
+    // Animación de entrada
+    document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('.content');
+      setTimeout(() => {
+        content.classList.add('fade-in');
+      }, 300);
+    });
+
+    // Barra de progreso de lectura
+    window.addEventListener('scroll', function() {
+      const article = document.querySelector('.article-detail');
+      const progressBar = document.getElementById('reading-progress');
+      
+      if (article) {
+        const articleTop = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollTop = window.pageYOffset;
+        
+        const articleStart = articleTop - windowHeight;
+        const articleEnd = articleTop + articleHeight;
+        
+        if (scrollTop >= articleStart && scrollTop <= articleEnd) {
+          const progress = ((scrollTop - articleStart) / (articleEnd - articleStart)) * 100;
+          progressBar.style.width = Math.min(progress, 100) + '%';
+        } else if (scrollTop < articleStart) {
+          progressBar.style.width = '0%';
+        } else {
+          progressBar.style.width = '100%';
+        }
+      }
+    });
+
+    // Efecto hover mejorado para imágenes
+    document.querySelectorAll('.evidence-right').forEach(img => {
+      img.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 10px 25px rgba(254, 181, 198, 0.3)';
+      });
+      
+      img.addEventListener('mouseleave', function() {
+        this.style.boxShadow = 'none';
+      });
+    });
+
+    // Animación especial para la estadística
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const number = entry.target.querySelector('.stats-number');
+          if (number) {
+            let count = 0;
+            const target = 220;
+            const increment = target / 50;
+            
+            const timer = setInterval(() => {
+              count += increment;
+              if (count >= target) {
+                count = target;
+                clearInterval(timer);
+              }
+              number.textContent = Math.floor(count);
+            }, 30);
+          }
+        }
+      });
+    });
+
+    const statsElement = document.querySelector('.stats-highlight');
+    if (statsElement) {
+      observer.observe(statsElement);
+    }
+  </script>
+
+</body>
+</html>

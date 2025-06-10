@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto - Cornoticias</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,600;0,900;1,100;1,900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F2CFF1;
+      color: #285B23;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #285B23;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .menu a {
+      color: #F2CFF1;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #feb5c6;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .page-title {
+      text-align: center;
+      margin: 2rem 0;
+      font-weight: 900;
+      font-size: 2.5rem;
+      color: #285B23;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .contact-form {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.1);
+    }
+
+    .contact-form h2 {
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: #285B23;
+    }
+
+    .contact-form p {
+      font-style: italic;
+      font-weight: 100;
+      margin-bottom: 1.5rem;
+      color: #666;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #285B23;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #feb5c6;
+      box-shadow: 0 0 0 3px rgba(254, 181, 198, 0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .submit-btn {
+      background-color: #285B23;
+      color: #F2CFF1;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #feb5c6;
+      color: #285B23;
+      transform: translateY(-2px);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .info-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(254, 181, 198, 0.2);
+    }
+
+    .info-card h3 {
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: #285B23;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card .icon {
+      width: 24px;
+      height: 24px;
+      background-color: #feb5c6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #285B23;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #285B23;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 400;
+    }
+
+    .social-link:hover {
+      background-color: #F2CFF1;
+      transform: translateX(5px);
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      background-color: #feb5c6;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: #285B23;
+    }
+
+    .support-message {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: linear-gradient(135deg, #285B23, #3A7030);
+      color: #F2CFF1;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.2);
+    }
+
+    .support-message h2 {
+      font-weight: 900;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .support-message p {
+      font-style: italic;
+      font-weight: 100;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .footer {
+      background-color: #285B23;
+      color: #F2CFF1;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-top: 4rem;
+    }
+
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: none;
+      border-left: 4px solid #feb5c6;
+    }
+
+    /* Validación de errores */
+    .form-group input.error,
+    .form-group textarea.error {
+      border-color: #e74c3c;
+    }
+
+    .form-group input.valid,
+    .form-group textarea.valid {
+      border-color: #feb5c6;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .contact-form,
+      .info-card {
+        padding: 1.5rem;
+      }
+
+      .support-message {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+
+      .menu a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">
+      <a href="Cornoticias.html">
+        <img src="1000093708-removebg-preview.png" alt="Logo Cornoticias" />
+      </a>
+    </div>
+    <nav class="menu">
+      <a href="Cornoticias.html">Inicio</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="https://www.unicordoba.edu.co/">Universidad</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <h1 class="page-title">Contacto</h1>
+
+  <div class="contact-container">
+    <!-- Formulario de contacto -->
+    <div class="contact-form">
+      <h2>¿Tienes una historia que contar?</h2>
+      <p>Envíanos tu noticia, denuncia o sugerencia. En Cornoticias, cada voz importa y cada historia merece ser escuchada.</p>
+      
+      <div class="success-message" id="successMessage">
+        ¡Mensaje enviado correctamente! Te responderemos pronto.
+      </div>
+
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono (opcional)</label>
+          <input type="tel" id="telefono" name="telefono">
+        </div>
+
+        <div class="form-group">
+          <label for="asunto">Asunto *</label>
+          <input type="text" id="asunto" name="asunto" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos tu historia, denuncia o sugerencia..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <!-- Información de contacto -->
+    <div class="contact-info">
+      <!-- Información del equipo -->
+      <div class="info-card">
+        <h3>
+          <span class="icon">📧</span>
+          Equipo Cornoticias
+        </h3>
+        <p style="font-style: italic; color: #666; margin-bottom: 1rem;">
+          Contacta directamente con nuestro equipo editorial
+        </p>
+        <div class="social-links">
+          <a href="mailto:danielacavadiamontes@gmail.com" class="social-link">
+            <span class="social-icon">@</span>
+            danielacavadiamontes@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <!-- Información de la universidad -->
+      <div class="info-card">
+        <h3>
+          <span class="icon">🏛️</span>
+          Universidad de Córdoba
+        </h3>
+        <p style="font-style: italic; color: #666; margin-bottom: 1rem;">
+          Enlaces oficiales y redes sociales de Unicórdoba
+        </p>
+        <div class="social-links">
+          <a href="https://www.unicordoba.edu.co/" target="_blank" class="social-link">
+            <span class="social-icon">🌐</span>
+            Página oficial Unicórdoba
+          </a>
+          <a href="https://www.instagram.com/portubienestar_unicor?igsh=YXV5MnoyOHBzN3Jl" target="_blank" class="social-link">
+            <span class="social-icon">📷</span>
+            @portubienestar_unicor
+          </a>
+          <a href="https://www.instagram.com/luchemosjuntosunicor?igsh=MjlycThra2hveXk3" target="_blank" class="social-link">
+            <span class="social-icon">📷</span>
+            @luchemosjuntosunicor
+          </a>
+          <a href="https://www.instagram.com/unicor__sexy?igsh=MWNscmFsZ3JlcTF4Mg==" target="_blank" class="social-link">
+            <span class="social-icon">📷</span>
+            @unicor__sexy
+          </a>
+        </div>
+      </div>
+
+      <!-- Información adicional -->
+      <div class="info-card">
+        <h3>
+          <span class="icon">⏰</span>
+          Tiempo de respuesta
+        </h3>
+        <p style="font-style: italic; color: #666;">
+          Nos comprometemos a responder todos los mensajes en un plazo máximo de 48 horas. Tu voz es importante para nosotros.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje de apoyo -->
+  <div class="support-message">
+    <h2>💛 Juntos construimos una universidad mejor</h2>
+    <p>
+      En Cornoticias creemos en el poder de la información libre y transparente. 
+      Cada historia que compartes, cada denuncia que realizas y cada sugerencia que envías 
+      nos ayuda a construir una comunidad universitaria más justa y equitativa.
+    </p>
+    <p>
+      <strong>Tu voz importa. Tu historia merece ser contada. Juntos podemos hacer la diferencia.</strong>
+    </p>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 Cornoticias. Hecho con 💛 por estudiantes para estudiantes.</p>
+  </footer>
+
+  <script>
+    // Manejo del formulario
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Obtener datos del formulario
+      const formData = new FormData(this);
+      const nombre = formData.get('nombre');
+      const email = formData.get('email');
+      const telefono = formData.get('telefono');
+      const asunto = formData.get('asunto');
+      const mensaje = formData.get('mensaje');
+      
+      // Crear el enlace mailto
+      const subject = encodeURIComponent(`[Cornoticias] ${asunto}`);
+      const body = encodeURIComponent(
+        `Nombre: ${nombre}\n` +
+        `Email: ${email}\n` +
+        `Teléfono: ${telefono || 'No proporcionado'}\n\n` +
+        `Mensaje:\n${mensaje}`
+      );
+      
+      const mailtoLink = `mailto:danielacavadiamontes@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Abrir cliente de correo
+      window.location.href = mailtoLink;
+      
+      // Mostrar mensaje de éxito
+      document.getElementById('successMessage').style.display = 'block';
+      
+      // Limpiar formulario
+      this.reset();
+      
+      // Ocultar mensaje después de 5 segundos
+      setTimeout(() => {
+        document.getElementById('successMessage').style.display = 'none';
+      }, 5000);
+    });
+
+    // Animación al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.contact-form, .info-card, .support-message');
+      
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.6s ease';
+        
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    });
+
+    // Validación en tiempo real
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+      input.addEventListener('blur', function() {
+        if (this.hasAttribute('required') && !this.value.trim()) {
+          this.classList.add('error');
+          this.classList.remove('valid');
+        } else if (this.value.trim()) {
+          this.classList.add('valid');
+          this.classList.remove('error');
+        } else {
+          this.classList.remove('error', 'valid');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

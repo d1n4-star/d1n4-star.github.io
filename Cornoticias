@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cornoticias</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="1000093708-removebg-preview.png" alt="Cornoticias Logo" class="logo">
+    <nav class="nav">
+      <a href="#">Inicio</a>
+      <a href="#">Noticias</a>
+      <a href="#">Eventos</a>
+      <a href="#">Historias</a>
+      <a href="#">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Para que las voces de los estudiantes nunca se apaguen</h1>
+    <p>Entérate de lo que ocurre en tu universidad en tiempo real</p>
+  </section>
+
+  <section class="noticias">
+    <h2>Últimas Noticias</h2>
+    <div class="noticia">
+      <img src="afe39155-e9cb-4faf-a2d4-d5b6c7f74bd0.png" alt="Noticia 1" />
+      <h3>Seguridad en la Biblioteca</h3>
+      <p>Denuncias sobre acoso han salido a la luz por falta de control en los accesos...</p>
+      <a href="#">Seguir leyendo</a>
+    </div>
+    <div class="noticia">
+      <img src="029bec43-42b6-4eb4-9d25-cd4d8ecdbf4f.png" alt="Noticia 2" />
+      <h3>Eventos Estudiantiles</h3>
+      <p>Desde ferias hasta muestras culturales, entérate de todo lo que ocurre...</p>
+      <a href="#">Seguir leyendo</a>
+    </div>
+  </section>
+
+  <section class="sobre">
+    <h2>¿Qué es Cornoticias?</h2>
+    <p>Hace un tiempo, mientras veía historias en Instagram, supe de una situación bastante horrible que vivieron varias compañeras en la universidad...</p>
+    <p>Así nació Cornoticias: una plataforma donde los estudiantes pueden expresar sus vivencias, denunciar injusticias y compartir eventos importantes. Un espacio para ser escuchados.</p>
+  </section>
+
+  <section class="contacto">
+    <h2>¿Tienes una historia que contar?</h2>
+    <p>Envíala a: <a href="mailto:cornoticias@gmail.com">cornoticias@gmail.com</a></p>
+    <p>¿Quieres recibir notificaciones? <a href="#">Suscríbete por correo</a></p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Cornoticias. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

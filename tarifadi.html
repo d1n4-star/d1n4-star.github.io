@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarifa Diferencial - Cornoticias</title>
+  <link rel="stylesheet" href="Style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #F2CFF1;
+      color: #285B23;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #285B23;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    .menu a {
+      color: #F2CFF1;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #feb5c6;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+
+    .hero-banner {
+      position: relative;
+      height: 350px;
+      background-image: url('diferencial.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-banner .overlay {
+      position: absolute;
+      top: 0; 
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: linear-gradient(135deg, rgba(40, 91, 35, 0.7), rgba(254, 181, 198, 0.3));
+    }
+
+    .hero-banner h1 {
+      position: relative;
+      color: #F2CFF1;
+      font-size: 2rem;
+      z-index: 1;
+      font-weight: 900;
+      font-style: normal;
+      padding: 0 1rem;
+      max-width: 900px;
+      text-shadow: 2px 2px 4px rgba(40, 91, 35, 0.8);
+    }
+
+    .article-detail .content {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      font-weight: 100;
+      font-style: italic;
+      background-color: white;
+      border-radius: 15px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 30px rgba(40, 91, 35, 0.1);
+    }
+
+    .article-detail .content img.full-width {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .article-detail .content img.full-width:hover {
+      transform: scale(1.02);
+    }
+
+    .evidence-right {
+      float: right;
+      width: 250px;
+      border-radius: 10px;
+      margin: 1rem 0 1rem 1rem;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+    }
+
+    .evidence-right:hover {
+      border-color: #feb5c6;
+      transform: scale(1.05);
+    }
+
+    .article-detail p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .article-detail p strong {
+      color: #285B23;
+      font-weight: 600;
+    }
+
+    /* Estilos para listas */
+    .article-detail ul, .article-detail ol {
+      margin: 1.5rem 0;
+      padding-left: 2rem;
+    }
+
+    .article-detail li {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .article-detail li strong {
+      color: #285B23;
+      font-weight: 600;
+    }
+
+    /* Estilos para enlaces */
+    .article-detail a {
+      color: #285B23;
+      text-decoration: underline;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .article-detail a:hover {
+      color: #feb5c6;
+      text-decoration: none;
+    }
+
+    /* Destacar secciones importantes */
+    .article-detail p:contains("¡Importante!") {
+      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid #285B23;
+      font-weight: 400;
+      margin: 1.5rem 0;
+    }
+
+    /* Estilo para párrafos con títulos destacados */
+    .article-detail p:has(strong:first-child) {
+      background-color: #f8f9fa;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 3px solid #feb5c6;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .evidence-right {
+        float: none;
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      .hero-banner h1 {
+        font-size: 1.5rem;
+      }
+
+      .article-detail .content {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+
+      .menu a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .article-detail ul, .article-detail ol {
+        padding-left: 1.5rem;
+      }
+    }
+
+    footer {
+      background-color: #285B23;
+      color: #F2CFF1;
+      text-align: center;
+      padding: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 100;
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-top: 4rem;
+    }
+
+    /* Animaciones de entrada */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Efecto de lectura progresiva */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background: linear-gradient(90deg, #285B23, #feb5c6);
+      z-index: 1000;
+      transition: width 0.3s ease;
+    }
+
+    /* Estilo especial para párrafos importantes */
+    .highlight-box {
+      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #285B23;
+      font-style: italic;
+      font-weight: 400;
+      color: #285B23;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .highlight-box::before {
+      content: '⚠️';
+      font-size: 1.5rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso de lectura -->
+  <div class="reading-progress" id="reading-progress"></div>
+
+  <header class="topbar">
+    <div class="logo">
+      <a href="Cornoticias.html">
+        <img src="1000093708-removebg-preview.png" alt="Logo Cornoticias" />
+      </a>
+    </div>
+   <nav class="menu">
+      <a href="Cornoticias.html">Inicio</a>
+      <a href="noticias.html">Noticias</a>
+      <a href="https://www.unicordoba.edu.co/">Universidad</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner">
+    <div class="overlay"></div>
+    <h1>Abierta Convocatoria 2025-2 de la Tarifa Diferencial Estudiantil en Montería</h1>
+  </section>
+
+  <main class="article-detail">
+  <section class="content fade-in">
+    <p><strong>Montería, Córdoba</strong></p>
+    <p>La Alcaldía de Montería, a través de la Secretaría de Educación Municipal, ha anunciado la apertura de la convocatoria 2025-2 para el Programa de Tarifa Diferencial, una política pública clave que busca subsidiar el servicio de transporte público terrestre colectivo para estudiantes y acudientes en la ciudad.</p>
+
+    <p>Esta iniciativa tiene como objetivo principal aliviar la carga económica de las familias monterianas y facilitar el acceso a la educación en sus diferentes niveles. La convocatoria invita a todos los potenciales beneficiarios a postularse a través de los canales digitales habilitados.</p>
+
+    <p><strong>¿Quiénes pueden ser beneficiarios?</strong></p>
+    <p>El programa está dirigido a estudiantes que cumplan con los siguientes requisitos y grupos poblacionales, según su nivel de Sisbén y tipo de institución:</p>
+<img src="articulose.jpg" alt="Captura evidencia" class="evidence-right" />
+    <ul>
+      <li><strong>Estudiantes en situación de pobreza (Sisbén Grupos A, B y C):</strong> Podrán acceder a descuentos del 80%, 70% y 60% respectivamente sobre el valor del pasaje, si están matriculados en establecimientos educativos privados desde preescolar hasta educación superior (pregrado), ciclos complementarios o técnicos.</li>
+      <li><strong>Estudiantes de instituciones educativas oficiales (públicas):</strong> Recibirán un subsidio del 100% del valor del trayecto, cubriendo desde preescolar hasta educación superior, incluyendo ciclos complementarios.</li>
+      <li><strong>Acudientes de estudiantes en establecimientos educativos oficiales:</strong> Aquellos registrados en el sistema SIMAT y con estudiantes en niveles de preescolar, básica primaria y básica secundaria, podrán acceder a un subsidio del 60%.</li>
+    </ul>
+
+    <p>Los beneficiarios recibirán un máximo de cuarenta y ocho (48) subsidios mensuales, equivalentes a dos por día.</p>
+
+    <p><strong>Proceso de Postulación 2025-2</strong></p>
+    <p>Las inscripciones para esta nueva convocatoria ya están abiertas. Es fundamental que todos los interesados realicen la postulación de forma correcta para asegurar el acceso al beneficio.</p>
+
+    <ol>
+      <li><strong>Formulario de Postulación:</strong> Accede al formulario principal a través de este enlace: <a href="https://forms.office.com/r/5qxw7R5TxP" target="_blank">https://forms.office.com/r/5qxw7R5TxP</a></li>
+      <li><strong>Envío de Documento de Identidad:</strong> Es obligatorio para todos los postulados cargar una copia legible de su documento de identidad en este enlace: <a href="https://forms.gle/uwDr6pm5KeRgaadP6" target="_blank">https://forms.gle/uwDr6pm5KeRgaadP6</a></li>
+      <li><strong>Fotografía para Dispositivo Electrónico (Solo si no tienes tarjeta):</strong> Si eres un nuevo postulado o no cuentas con la tarjeta electrónica, deberás cargar una fotografía para su producción aquí: <a href="https://forms.gle/rffohrSvHJXGU2566" target="_blank">https://forms.gle/rffohrSvHJXGU2566</a></li>
+    </ol>
+
+    <div class="highlight-box">
+      <p><strong>¡Importante!</strong> Todos los beneficiarios, incluso los de convocatorias anteriores, deben postularse nuevamente cada semestre para mantener el beneficio.</p>
+    </div>
+
+    <p><strong>Adquisición y Uso del Dispositivo Electrónico (Tarjeta)</strong></p>
+    <p>Los estudiantes seleccionados deberán asumir el costo de producción de la tarjeta electrónica (dispositivo) para el cargue de los bonos de descuento. El valor es de $15.000 COP y el pago se realiza en cualquier corresponsal bancario de Bancolombia, utilizando el <strong>CÓDIGO CONVENIO: 92989</strong> (NOMBRE: RECAUDAR SINÚ TARIFA DIFERENCIAL), con el número de documento de identidad del beneficiario como referencia. La constancia de pago debe enviarse a <a href="mailto:gerencia@recaudarsinu.com">gerencia@recaudarsinu.com</a>.</p>
+
+    <p>En caso de pérdida, daño o falla del dispositivo, se debe reportar por correo electrónico a <a href="mailto:recaudo.electronico@recaudarsinu.com">recaudo.electronico@recaudarsinu.com</a> con copia a <a href="mailto:tarifadiferencial@monteria.gov.co">tarifadiferencial@monteria.gov.co</a>, adjuntando los datos del beneficiario y la fecha del incidente.</p>
+
+    <p>Las empresas de transporte público vinculadas al programa son <strong>METROSINÚ S.A.</strong>, <strong>MONTERIA EXPRESS S.A.</strong>, y <strong>SINUMOVIL S.A.S.</strong>, las cuales deben tener avisos alusivos a la aceptación de la tarjeta en sus buses.</p>
+<img src="Captura de pantalla_8-6-2025_181914_www.instagram.com.jpeg" alt="Captura evidencia" class="evidence-right" />
+    <p><strong>Financiación y Sostenibilidad</strong></p>
+    <p>El programa es sostenido a través del Fondo de Tarifa Diferencial, financiado por ingresos corrientes de libre destinación, convenios interadministrativos y donaciones de empresas privadas. La administración municipal destina anualmente mil (1.000) Salarios Mínimos Legales Mensuales Vigentes a este fondo, asegurando la continuidad de este apoyo social.</p>
+
+    <p><strong>Atención de PQRS e Inquietudes</strong></p>
+    <p>Para cualquier Petición, Queja, Reclamo o Sugerencia (PQRS), los usuarios pueden enviar un correo electrónico a <a href="mailto:tarifadiferencial@monteria.gov.co">tarifadiferencial@monteria.gov.co</a>, incluyendo el nombre completo, tipo y número de documento de identidad, y una descripción clara de la solicitud. Todas las solicitudes serán atendidas bajo los términos de la Ley 1755 de 2015.</p>
+
+    <p>Se recomienda a los postulados revisar la grabación de la socialización virtual de la convocatoria 2025-2 para clarificar dudas y evitar errores en el proceso.</p>
+
+    <p><strong>¡No dejes pasar esta oportunidad!</strong> La Tarifa Diferencial es un apoyo fundamental para miles de estudiantes en Montería.</p>
+  </section>
+</main>
+
+  <footer>
+    <p>&copy; 2025 Cornoticias. Hecho con 💛 por estudiantes para estudiantes.</p>
+  </footer>
+
+  <script>
+    // Animación de entrada
+    document.addEventListener('DOMContentLoaded', function() {
+      const content = document.querySelector('.content');
+      setTimeout(() => {
+        content.classList.add('fade-in');
+      }, 300);
+    });
+
+    // Barra de progreso de lectura
+    window.addEventListener('scroll', function() {
+      const article = document.querySelector('.article-detail');
+      const progressBar = document.getElementById('reading-progress');
+      
+      if (article) {
+        const articleTop = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollTop = window.pageYOffset;
+        
+        const articleStart = articleTop - windowHeight;
+        const articleEnd = articleTop + articleHeight;
+        
+        if (scrollTop >= articleStart && scrollTop <= articleEnd) {
+          const progress = ((scrollTop - articleStart) / (articleEnd - articleStart)) * 100;
+          progressBar.style.width = Math.min(progress, 100) + '%';
+        } else if (scrollTop < articleStart) {
+          progressBar.style.width = '0%';
+        } else {
+          progressBar.style.width = '100%';
+        }
+      }
+    });
+
+    // Efecto hover mejorado para imágenes
+    document.querySelectorAll('.evidence-right').forEach(img => {
+      img.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 10px 25px rgba(254, 181, 198, 0.3)';
+      });
+      
+      img.addEventListener('mouseleave', function() {
+        this.style.boxShadow = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>
