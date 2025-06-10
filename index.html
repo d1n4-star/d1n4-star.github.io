@@ -10,8 +10,8 @@
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background-color: #F2CFF1;
-      color: #285B23;
+      background-color: #F3E8D3;
+      color: #133215;
     }
 
     .animate-scroll {
@@ -30,12 +30,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(135deg, #285B23 0%, #3A7030 100%);
+      background: linear-gradient(135deg, #133215 0%, #1D4A20 100%);
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(40, 91, 35, 0.3);
+      box-shadow: 0 4px 20px rgba(19, 50, 21, 0.2);
       backdrop-filter: blur(10px);
     }
 
@@ -56,7 +56,7 @@
     }
 
     .menu a {
-      color: #F2CFF1;
+      color: #F3E8D3;
       text-decoration: none;
       font-weight: 600;
       padding: 0.75rem 1.5rem;
@@ -66,7 +66,7 @@
       overflow: hidden;
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(254, 181, 198, 0.2);
+      border: 1px solid rgba(146, 183, 117, 0.3);
     }
 
     .menu a::before {
@@ -76,7 +76,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      background: linear-gradient(135deg, #92B775, #F3E8D3);
       transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: -1;
     }
@@ -86,10 +86,10 @@
     }
 
     .menu a:hover {
-      color: #285B23;
+      color: #133215;
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(254, 181, 198, 0.4);
-      border-color: #feb5c6;
+      box-shadow: 0 8px 25px rgba(146, 183, 117, 0.4);
+      border-color: #92B775;
     }
 
     .menu a:active {
@@ -120,7 +120,7 @@
     .hero-banner {
       position: relative;
       height: 500px;
-      background-image: linear-gradient(rgba(40, 91, 35, 0.3), rgba(254, 181, 198, 0.2)), url('4b823460-7848-429d-995a-3b66567240c6.jpg');
+      background-image: linear-gradient(rgba(19, 50, 21, 0.3), rgba(146, 183, 117, 0.2)), url('4b823460-7848-429d-995a-3b66567240c6.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -136,20 +136,20 @@
       left: 0;
       width: 100%; 
       height: 100%;
-      background: linear-gradient(135deg, rgba(40, 91, 35, 0.4), rgba(254, 181, 198, 0.2));
+      background: linear-gradient(135deg, rgba(19, 50, 21, 0.4), rgba(146, 183, 117, 0.2));
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      color: #F2CFF1;
+      color: #F3E8D3;
       animation: fadeInUp 1.2s ease-out;
     }
 
     .hero-content img {
       height: 500px;
       margin-bottom: 1rem;
-      filter: drop-shadow(0 10px 30px rgba(40, 91, 35, 0.3));
+      filter: drop-shadow(0 10px 30px rgba(19, 50, 21, 0.3));
       animation: float 6s ease-in-out infinite;
     }
 
@@ -191,10 +191,10 @@
 
     .card {
       background: white;
-      border: 1px solid rgba(254, 181, 198, 0.3);
+      border: 1px solid rgba(146, 183, 117, 0.3);
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(40, 91, 35, 0.1);
+      box-shadow: 0 8px 25px rgba(19, 50, 21, 0.08);
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
     }
@@ -206,7 +206,7 @@
       left: 0;
       width: 100%;
       height: 3px;
-      background: linear-gradient(90deg, #285B23, #feb5c6);
+      background: linear-gradient(90deg, #133215, #92B775);
       transform: scaleX(0);
       transition: transform 0.3s ease;
     }
@@ -217,8 +217,8 @@
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(254, 181, 198, 0.25);
-      border-color: #feb5c6;
+      box-shadow: 0 15px 40px rgba(146, 183, 117, 0.25);
+      border-color: #92B775;
     }
 
     .card img {
@@ -238,7 +238,7 @@
 
     .card-content h3 {
       margin: 0 0 0.75rem;
-      color: #285B23;
+      color: #133215;
       font-weight: 900;
       font-style: italic;
       line-height: 1.3;
@@ -257,7 +257,7 @@
     .card-content a {
       display: inline-block;
       margin-top: 1rem;
-      color: #285B23;
+      color: #133215;
       text-decoration: none;
       font-weight: 600;
       padding: 0.5rem 1rem;
@@ -275,7 +275,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, #feb5c6, #F2CFF1);
+      background: linear-gradient(135deg, #92B775, #F3E8D3);
       transition: left 0.3s ease;
       z-index: -1;
     }
@@ -285,15 +285,15 @@
     }
 
     .card-content a:hover {
-      color: #285B23;
+      color: #133215;
       transform: translateY(-2px);
     }
 
     /* Sección Sobre Cornoticias mejorada */
     .sobre {
-      background: linear-gradient(135deg, #F2CFF1, white);
+      background: linear-gradient(135deg, #F3E8D3, white);
       padding: 4rem 2rem;
-      color: #285B23;
+      color: #133215;
     }
 
     .contenido-sobre {
@@ -316,7 +316,7 @@
       max-width: 400px;
       width: 100%;
       border-radius: 15px;
-      box-shadow: 0 15px 35px rgba(40, 91, 35, 0.15);
+      box-shadow: 0 15px 35px rgba(19, 50, 21, 0.1);
       transition: transform 0.4s ease;
     }
 
@@ -344,7 +344,7 @@
       left: 0;
       width: 60px;
       height: 4px;
-      background: linear-gradient(90deg, #285B23, #feb5c6);
+      background: linear-gradient(90deg, #133215, #92B775);
       border-radius: 2px;
     }
 
@@ -356,14 +356,14 @@
     }
 
     .contenido-sobre p strong {
-      color: #285B23;
+      color: #133215;
       font-weight: 600;
     }
 
     /* Footer mejorado */
     .footer {
-      background: linear-gradient(135deg, #285B23, #3A7030);
-      color: #F2CFF1;
+      background: linear-gradient(135deg, #133215, #1D4A20);
+      color: #F3E8D3;
       text-align: center;
       padding: 2rem;
       font-family: 'Montserrat', sans-serif;
@@ -380,7 +380,7 @@
       left: 0;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, #feb5c6, #F2CFF1, #feb5c6);
+      background: linear-gradient(90deg, #92B775, #F3E8D3, #92B775);
     }
 
     /* Responsive mejorado */
